@@ -21,7 +21,9 @@ namespace IdentityServer
 
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[]
-            { };
+            {
+                 new ApiResource("api1", "My API")
+            };
 
         public static IEnumerable<Client> Clients =>
             new Client[]
@@ -41,8 +43,24 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile
                     },
                     PostLogoutRedirectUris=new List<string>{"https://localhost:44356/signout-callback-oidc" }
+                },
+                 new Client
+                {
+                    ClientId = "client",
+
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "api1" }
                 }
-            };
+                    };
 
         public static List<TestUser> Users =>
              new List<TestUser>
