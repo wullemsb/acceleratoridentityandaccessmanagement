@@ -15,7 +15,8 @@ namespace IdentityServer
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
             {
-                new IdentityResources.OpenId()
+                new IdentityResources.OpenId(),
+                new IdentityResources.Profile()
             };
 
         public static IEnumerable<ApiResource> Apis =>
@@ -38,7 +39,8 @@ namespace IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile
-                    }
+                    },
+                    PostLogoutRedirectUris=new List<string>{"https://localhost:44356/signout-callback-oidc" }
                 }
             };
 

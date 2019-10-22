@@ -45,6 +45,8 @@ namespace WebApplication1
             {
                 options.Authority = "https://localhost:44303/";
                 options.ClientId = "mvc";
+                options.SaveTokens = true;
+                //options.Scope = "profile user";
             });
         }
 
@@ -65,8 +67,9 @@ namespace WebApplication1
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
