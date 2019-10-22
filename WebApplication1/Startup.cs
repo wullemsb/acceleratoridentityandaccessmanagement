@@ -37,6 +37,12 @@ namespace WebApplication1
                 //options.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            services.AddAccessTokenManagement()
+                .ConfigureBackchannelHttpClient(client =>
+                {
+                    client.Timeout = TimeSpan.FromSeconds(30);
+                });
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -47,8 +53,15 @@ namespace WebApplication1
             {
                 options.Authority = "https://localhost:44303/";
                 options.ClientId = "mvc";
+                options.ClientSecret = "secret";
+                options.ResponseType = "code id_token";
+
                 options.SaveTokens = true;
-                //options.Scope = "profile user";
+                options.GetClaimsFromUserInfoEndpoint = true;
+
+                options.Scope.Add("api1");
+                options.Scope.Add("offline_access");
+
             });
         }
 

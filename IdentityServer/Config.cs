@@ -23,6 +23,9 @@ namespace IdentityServer
             new ApiResource[]
             {
                  new ApiResource("api1", "My API")
+                 { 
+                     UserClaims=new List<string>{ IdentityModel.JwtClaimTypes.Name }
+                 }
             };
 
         public static IEnumerable<Client> Clients =>
@@ -32,7 +35,11 @@ namespace IdentityServer
                     ClientId = "mvc",
                     ClientName = "MVC Client",
                     Enabled = true,
-                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
                     RequireConsent = true,
                     AllowRememberConsent = true,
                     RedirectUris =
@@ -40,8 +47,10 @@ namespace IdentityServer
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
                     },
+                    AllowOfflineAccess=true,
                     PostLogoutRedirectUris=new List<string>{"https://localhost:44356/signout-callback-oidc" }
                 },
                  new Client

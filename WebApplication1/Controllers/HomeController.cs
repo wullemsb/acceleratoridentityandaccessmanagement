@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using IdentityModel.Client;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
@@ -34,20 +36,14 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> CallApi()
         {
             var client = _clientFactory.CreateClient();
-            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:44303/");
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = disco.TokenEndpoint,
-                ClientId = "client",
-                ClientSecret = "secret",
-                Scope = "api1"
-            });
+            //var accessToken = await HttpContext.GetTokenAsync("access_token");
+            var accessToken = await HttpContext.GetUserAccessTokenAsync();
 
-            client.SetBearerToken(tokenResponse.AccessToken);
+            client.SetBearerToken(accessToken);
 
             var response = await client.GetAsync("https://localhost:44332/identity");
 
-            return Json(response);
+            return Json(await response.Content.ReadAsStringAsync());
         }
 
         public IActionResult Privacy()
