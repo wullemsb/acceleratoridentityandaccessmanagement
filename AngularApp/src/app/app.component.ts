@@ -66,8 +66,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private doCallbackLogicIfRequired() {
         // Will do a callback, if the url has a hash parameter.
-        if (window.location.hash) {
-          this.oidcSecurityService.authorizedImplicitFlowCallback();
-        }
+        this.oidcSecurityService.authorizedCallbackWithCode(window.location.toString());
     }
 }

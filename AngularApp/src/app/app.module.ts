@@ -47,7 +47,7 @@ export class AppModule {
                 redirect_url: 'http://localhost:4200',
                 client_id: 'angularClient',
                 scope: 'openid profile api1',
-                response_type: 'id_token token',
+                response_type: 'code',
                 silent_renew: true,
                 silent_renew_url: 'http://localhost:4200/assets/silent-renew.html',
                 log_console_debug_active: true,

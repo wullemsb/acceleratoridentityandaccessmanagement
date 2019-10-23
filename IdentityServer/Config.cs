@@ -41,9 +41,10 @@ namespace IdentityServer
             IdentityTokenLifetime=60,
             AccessTokenLifetime=60,
 
-            AllowedGrantTypes = GrantTypes.Implicit,
+            AllowedGrantTypes = GrantTypes.Code,
             AllowAccessTokensViaBrowser = true,
-
+            RequirePkce = true,
+            RequireClientSecret=false,
             RedirectUris =           { "http://localhost:4200","http://localhost:4200/assets/silent-renew.html" },
             PostLogoutRedirectUris = { "http://localhost:4200" },
             AllowedCorsOrigins =     { "http://localhost:4200" },
