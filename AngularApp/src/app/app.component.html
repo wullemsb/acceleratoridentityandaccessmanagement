@@ -3,6 +3,8 @@
 <button *ngIf="!isAuthenticated" (click)="login()">Login</button>
 <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
 
+<button *ngIf="isAuthenticated" (click)="callApi()">Call API</button>
+
 <hr />
 
 Is Authenticated: {{ isAuthenticated }}

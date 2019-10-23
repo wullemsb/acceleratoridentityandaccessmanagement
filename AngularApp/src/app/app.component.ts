@@ -40,6 +40,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.oidcSecurityService.logoff();
     }
 
+    callApi() {
+
+    }
+
     private doCallbackLogicIfRequired() {
         // Will do a callback, if the url has a hash parameter.
         if (window.location.hash) {
