@@ -38,11 +38,13 @@ namespace IdentityServer
             ClientName = "JavaScript Client",
             //ClientUri = "http://identityserver.io",
             RequireConsent=true,
+            IdentityTokenLifetime=60,
+            AccessTokenLifetime=60,
 
             AllowedGrantTypes = GrantTypes.Implicit,
             AllowAccessTokensViaBrowser = true,
 
-            RedirectUris =           { "http://localhost:4200" },
+            RedirectUris =           { "http://localhost:4200","http://localhost:4200/assets/silent-renew.html" },
             PostLogoutRedirectUris = { "http://localhost:4200" },
             AllowedCorsOrigins =     { "http://localhost:4200" },
 

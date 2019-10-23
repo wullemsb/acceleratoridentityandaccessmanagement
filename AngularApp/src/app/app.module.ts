@@ -48,8 +48,8 @@ export class AppModule {
                 client_id: 'angularClient',
                 scope: 'openid profile api1',
                 response_type: 'id_token token',
-                silent_renew: false,
-                silent_renew_url: 'http://localhost:4200/silent-renew.html',
+                silent_renew: true,
+                silent_renew_url: 'http://localhost:4200/assets/silent-renew.html',
                 log_console_debug_active: true,
                 // all other properties you want to set
             };
