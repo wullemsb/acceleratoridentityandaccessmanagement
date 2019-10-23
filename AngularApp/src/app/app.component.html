@@ -1,0 +1,13 @@
+<router-outlet></router-outlet>
+
+<button *ngIf="!isAuthenticated" (click)="login()">Login</button>
+<button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+
+<hr />
+
+Is Authenticated: {{ isAuthenticated }}
+
+<br />
+<br />
+
+{{ userData | json }}
