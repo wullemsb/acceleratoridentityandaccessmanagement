@@ -35,7 +35,8 @@ namespace IdentityServer
                     ClientId = "mvc",
                     ClientName = "MVC Client",
                     Enabled = true,
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowedGrantTypes = GrantTypes.Code,//GrantTypes.Hybrid,
+                    RequirePkce=true,
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
