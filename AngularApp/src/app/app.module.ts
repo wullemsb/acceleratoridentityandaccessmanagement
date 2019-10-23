@@ -46,7 +46,7 @@ export class AppModule {
                 stsServer: configResult.customConfig.stsServer,
                 redirect_url: 'http://localhost:4200',
                 client_id: 'angularClient',
-                scope: 'openid profile',
+                scope: 'openid profile api1',
                 response_type: 'id_token token',
                 silent_renew: false,
                 silent_renew_url: 'http://localhost:4200/silent-renew.html',

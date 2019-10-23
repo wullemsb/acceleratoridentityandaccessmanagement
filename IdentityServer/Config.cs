@@ -21,8 +21,13 @@ namespace IdentityServer
             };
 
         public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[]
-            { };
+           new ApiResource[]
+           {
+                 new ApiResource("api1", "My API")
+                 {
+                     UserClaims=new List<string>{ IdentityModel.JwtClaimTypes.Name }
+                 }
+           };
 
         public static IEnumerable<Client> Clients =>
             new Client[]
@@ -46,6 +51,7 @@ namespace IdentityServer
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
                 IdentityServerConstants.StandardScopes.Email,
+                "api1"
             }
           }
             };
