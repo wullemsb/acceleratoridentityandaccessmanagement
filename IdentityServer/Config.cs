@@ -40,7 +40,7 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile
                     },
-                    FrontChannelLogoutUri="https://localhost:44356/home/logout",
+                    BackChannelLogoutUri="https://localhost:44356/home/logout",
                     PostLogoutRedirectUris=new List<string>{"https://localhost:44356/signout-callback-oidc" }
                 }
             };
