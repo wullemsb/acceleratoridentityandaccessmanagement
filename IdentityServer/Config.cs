@@ -23,7 +23,7 @@ namespace IdentityServer
             new ApiResource[]
             {
                  new ApiResource("api1", "My API")
-                 { 
+                 {
                      UserClaims=new List<string>{ IdentityModel.JwtClaimTypes.Name }
                  }
             };
@@ -68,6 +68,22 @@ namespace IdentityServer
 
                     // scopes that client has access to
                     AllowedScopes = { "api1" }
+                },
+
+                 new Client
+                {
+                    ClientId = "api1.client",
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    AllowedGrantTypes = { "delegation" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        "api2"
+                    }
                 }
                     };
 

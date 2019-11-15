@@ -27,7 +27,9 @@ namespace IdentityServer
                 .AddInMemoryIdentityResources(Config.Ids)
                 .AddInMemoryApiResources(Config.Apis)
                 .AddInMemoryClients(Config.Clients)
-                .AddTestUsers(Config.Users);
+                .AddTestUsers(Config.Users)
+                .AddExtensionGrantValidator<DelegationGrantValidator>();
+            
             
 
             // not recommended for production - you need to store your key material somewhere secure
