@@ -27,6 +27,8 @@ namespace SampleAPI
         {
             services.AddControllers();
 
+            services.AddHttpClient();
+
             services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {

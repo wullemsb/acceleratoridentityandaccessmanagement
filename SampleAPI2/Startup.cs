@@ -31,7 +31,7 @@ namespace SampleAPI2
            {
                options.Authority = "https://localhost:44303/";
 
-               options.Audience = "api1";
+               options.Audience = "api2";
            });
         }
 

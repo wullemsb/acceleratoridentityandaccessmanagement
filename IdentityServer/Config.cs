@@ -25,6 +25,10 @@ namespace IdentityServer
                  new ApiResource("api1", "My API")
                  {
                      UserClaims=new List<string>{ IdentityModel.JwtClaimTypes.Name }
+                 },
+                 new ApiResource("api2", "My second API")
+                 {
+                     UserClaims=new List<string>{ IdentityModel.JwtClaimTypes.Name }
                  }
             };
 
