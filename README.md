@@ -1,4 +1,4 @@
-# Accelerator - Identity and accessmanagement
+# Accelerator - Identity and access management
 These are the exercices for my Identity and Access Management training at Ordina.
 
 It explains different flows using OAuth and OIDC and shows how to use them inside Angular and ASP.NET Core.
